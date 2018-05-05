@@ -38,13 +38,22 @@ r_zip_csv <- function(ifiles,
     # ---------------------------------------------------
     # 2. unzip file - extracts from original path to destination path
     # ---------------------------------------------------
-    unzip(file.path(from_path, ifiles[i]),
-          exdir = to_path)
+    if(unzip == TRUE)
+    {
+      unzip(file.path(from_path, ifiles[i]),
+            exdir = to_path)
+    }
     # ---------------------------------------------------
     # 3. read to df
     # ---------------------------------------------------
-    res <- readr::read_csv(file.path(to_path,
-                              gsub(".zip", "", ignore.case = TRUE, ifiles[i])))
+    if(unzip == TRUE){
+      res <- readr::read_csv(file.path(to_path,
+                                       gsub(".zip", "", ignore.case = TRUE, ifiles[i])))      
+    } else
+    {
+      res <- readr::read_csv(file.path(from_path, ifiles[i]))
+    }
+    
     # ---------------------------------------------------
     # Remove file
     # ---------------------------------------------------
