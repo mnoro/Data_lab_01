@@ -40,7 +40,7 @@ r_zip_csv <- function(ifiles,
     # ---------------------------------------------------
     if(unzip == TRUE)
     {
-      unzip(file.path(from_path, ifiles[i]),
+      unzip(file.path(from_path[i], ifiles[i]),
             exdir = to_path)
     }
     # ---------------------------------------------------
@@ -51,7 +51,7 @@ r_zip_csv <- function(ifiles,
                                        gsub(".zip", "", ignore.case = TRUE, ifiles[i])))      
     } else
     {
-      res <- readr::read_csv(file.path(from_path, ifiles[i]))
+      res <- readr::read_csv(file.path(from_path[i], ifiles[i]))
     }
     
     # ---------------------------------------------------
