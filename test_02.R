@@ -57,7 +57,7 @@ r_zip_csv <- function(ifiles,
     # ---------------------------------------------------
     # Remove file
     # ---------------------------------------------------
-    if(remove == TRUE){
+    if(remove == TRUE && unzip == TRUE){
       file.remove(file.path(to_path,
                             gsub(".zip", "", ignore.case = TRUE, ifiles[i])))
     }
@@ -99,4 +99,3 @@ x <- r_zip_csv(ifiles = ifiles_,
                from_path = from_path_, 
                add_col_value = add_col_value_,
                remove = TRUE)
-x <-
