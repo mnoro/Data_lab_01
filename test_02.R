@@ -4,18 +4,18 @@
 #' 
 #'
 #' @param ifiles The vector of the files to unzip and load as dataframes
-#' @param to_path 
-#' @param unzip 
-#' @param from_path 
-#' @param add_col_value A column is added to the end with this value
-#' @param remove 
+#' @param to_path The path destination 
+#' @param unzip To specify whether to unzip or not
+#' @param from_path The vector of the origin path of all the files
+#' @param add_col_value A column that is added to the end with this value
+#' @param remove TRUE to remove unzipped files
 #'
 #' @return
 #' @export
 #'
 #' @examples
 #' \donotrun{
-#' ifiles_ <- list.files(file.path(getwd(), "data"), pattern = ".zip")
+#' ifiles_ <- rep(list.files(file.path(getwd(), "data"), pattern = ".zip"),3)
 #' from_path_ <- file.path(getwd(),"data")
 #' to_path_ <- file.path(getwd(),"data2")
 #' add_col_value_ <- c("Nov", "Dec", "Jan")
@@ -76,8 +76,8 @@ r_zip_csv <- function(ifiles,
 #
 # Test Function
 #
-from_path_ <- file.path(getwd(),"data")
-ifiles_ <- list.files(from_path_, pattern = ".zip")
+from_path_ <- rep(file.path(getwd(),"data"),3)
+ifiles_ <- list.files(from_path_[1], pattern = ".zip")
 to_path_ <- file.path(getwd(),"data2")
 add_col_value_ <- c("Nov", "Dec", "Jan")
 
